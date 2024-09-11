@@ -18,3 +18,7 @@ func _process(delta: float) -> void:
 		animated_sprite_2d.flip_h = false
 
 	position.x += direction * speed * delta
+
+
+func _on_collision_shape_2d_draw() -> void:
+	pass # Replace with function body.

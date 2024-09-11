@@ -7,7 +7,6 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 	Engine.time_scale = 0.5
 	body.get_node("CollisionShape2D").queue_free()
 	timer.start()
-	
 
 
 func _on_timer_timeout() -> void:

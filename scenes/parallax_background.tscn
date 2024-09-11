@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://coov1cr2f637h"]
+
+[ext_resource type="Texture2D" uid="uid://b6vtuu1kk25xk" path="res://assets/parallex_background/Version C/layers/sky.png" id="1_0rnmk"]
+[ext_resource type="Texture2D" uid="uid://3nouuynm41ge" path="res://assets/parallex_background/Version C/layers/clouds.png" id="2_03img"]
+[ext_resource type="Texture2D" uid="uid://dyuo7ikb3h3ei" path="res://assets/parallex_background/Version C/layers/far-mountains.png" id="3_rhfwv"]
+[ext_resource type="Texture2D" uid="uid://d0f6vuu75md58" path="res://assets/parallex_background/Version C/layers/canyon.png" id="4_77n22"]
+[ext_resource type="Texture2D" uid="uid://bxogrkq4pxcx8" path="res://assets/parallex_background/Version C/layers/front.png" id="5_inbh4"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+scale = Vector2(10, 1)
+texture = ExtResource("1_0rnmk")
+centered = false
+
+[node name="Cloud" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cloud"]
+texture = ExtResource("2_03img")
+centered = false
+
+[node name="Far_Mountain" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Far_Mountain"]
+scale = Vector2(1.52885, 1)
+texture = ExtResource("3_rhfwv")
+centered = false
+
+[node name="Canyon" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Canyon"]
+texture = ExtResource("4_77n22")
+centered = false
+
+[node name="Front" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Front"]
+texture = ExtResource("5_inbh4")
+centered = false
