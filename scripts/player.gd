@@ -1,3 +1,5 @@
+class_name Player
+
 extends CharacterBody2D
 
 const SPEED = 130.0
@@ -9,13 +11,14 @@ const DOUBLE_JUMP_VELOCITY = -200.0
 var is_double_jump = true
 var is_rolling = false
 var roll_timer = 0.0
+var is_on_ladder = false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_audio: PlayerAudio = $AudioStreamPlayer2D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not is_on_ladder:
 		velocity += get_gravity() * delta
 
 	# Handle jump.

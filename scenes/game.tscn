@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d3px1b4eq0yva"]
+[gd_scene load_steps=25 format=4 uid="uid://d3px1b4eq0yva"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_j0a5e"]
 [ext_resource type="PackedScene" uid="uid://bevna44ncqi6" path="res://scenes/player.tscn" id="1_jre45"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://tkfggo1ud3c1" path="res://scenes/reverse_platform.tscn" id="8_512xl"]
 [ext_resource type="PackedScene" uid="uid://coov1cr2f637h" path="res://scenes/parallax_background.tscn" id="11_etga7"]
 [ext_resource type="PackedScene" uid="uid://c312yic73hsbl" path="res://scenes/gameplay_ui.tscn" id="12_qch6s"]
+[ext_resource type="PackedScene" uid="uid://63gr0dlv2ok1" path="res://scenes/ladder.tscn" id="13_07ypo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f6a3s"]
 texture = ExtResource("2_ylvhx")
@@ -366,3 +367,9 @@ position = Vector2(576, 160)
 position = Vector2(88, -48)
 
 [node name="Gameplay_UI" parent="." instance=ExtResource("12_qch6s")]
+
+[node name="Ladder" parent="." instance=ExtResource("13_07ypo")]
+position = Vector2(6, 57)
+
+[node name="Ladder2" parent="." instance=ExtResource("13_07ypo")]
+position = Vector2(6, 67)
