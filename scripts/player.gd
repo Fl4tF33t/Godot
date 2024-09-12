@@ -4,7 +4,9 @@ const SPEED = 130.0
 const ROLL_SPEED = 175.0
 const ROLL_DURATION = 0.5
 const JUMP_VELOCITY = -300.0
+const DOUBLE_JUMP_VELOCITY = -200.0
 
+var is_double_jump = true
 var is_rolling = false
 var roll_timer = 0.0
 
@@ -18,7 +20,12 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		is_double_jump = false
 		velocity.y = JUMP_VELOCITY
+		player_audio._play_sound(PlayerAudio.Sound.Jump)
+	if Input.is_action_just_pressed("jump") and not is_on_floor() and not is_double_jump:
+		is_double_jump = true
+		velocity.y = DOUBLE_JUMP_VELOCITY
 		player_audio._play_sound(PlayerAudio.Sound.Jump)
 
 	# Handle Movement

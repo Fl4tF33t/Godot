@@ -1,13 +1,14 @@
 extends CanvasLayer
 
 @onready var game_manager: Node = %GameManager
+@onready var coin: Label = $Coin
 
 # Time variables
 var time: float = 0
 var time_is_active:= false
 
 func _ready() -> void:
-	game_manager.on_score_change.connect(track_score)
+	game_manager.on_score_change.connect(func(score): coin.text = "Score: " + str(score))
 	time_is_active = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,7 +17,6 @@ func _process(delta: float) -> void:
 
 # Handle in game timer
 func track_time(delta: float) -> void:
-	
 	if not time_is_active:
 		time = 0
 		return
@@ -26,6 +26,3 @@ func track_time(delta: float) -> void:
 	var seconds = int(time) % 60  # Calculate the remaining seconds
 	var formatted_time = str(minutes).pad_zeros(2) + ":" + str(seconds).pad_zeros(2)  # Format as MM:SS
 	$Timer.text = formatted_time
-
-func track_score(score: int) -> void:
-	$Coin.text = "Score: " + str(score)
