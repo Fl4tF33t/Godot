@@ -1,13 +1,13 @@
 extends CanvasLayer
 
-@onready var game_manager: GameManager = %GameManager
+@onready var game_manager: Node = %GameManager
 
 # Time variables
 var time: float = 0
 var time_is_active:= false
 
 func _ready() -> void:
-	game_manager.connect(on_score_change)
+	game_manager.on_score_change.connect(track_score)
 	time_is_active = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

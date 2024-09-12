@@ -1,5 +1,3 @@
-class_name  GameManager
-
 extends Node
 
 @onready var score_label: Label = $Label
