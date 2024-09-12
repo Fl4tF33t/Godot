@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dchncqewe78ai"]
+
+[ext_resource type="Script" path="res://scripts/teleporter.gd" id="1_w1xi3"]
+[ext_resource type="Texture2D" uid="uid://dodvffhmjodil" path="res://assets/sprites/world_tileset.png" id="2_nf5dr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53jdt"]
+size = Vector2(14, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phb2f"]
+size = Vector2(16, 9)
+
+[node name="Teleporter" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_w1xi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_53jdt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nf5dr")
+region_enabled = true
+region_rect = Rect2(112, 80, 16, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_phb2f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

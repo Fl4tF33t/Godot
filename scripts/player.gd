@@ -22,14 +22,16 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		is_double_jump = false
-		velocity.y = JUMP_VELOCITY
-		player_audio._play_sound(PlayerAudio.Sound.Jump)
-	if Input.is_action_just_pressed("jump") and not is_on_floor() and not is_double_jump:
-		is_double_jump = true
-		velocity.y = DOUBLE_JUMP_VELOCITY
-		player_audio._play_sound(PlayerAudio.Sound.Jump)
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() or is_on_ladder:
+			is_double_jump = false
+			is_on_ladder = false
+			velocity.y = JUMP_VELOCITY
+			player_audio._play_sound(PlayerAudio.Sound.Jump)
+		elif not is_double_jump and not is_on_ladder:
+			is_double_jump = true
+			velocity.y = DOUBLE_JUMP_VELOCITY
+			player_audio._play_sound(PlayerAudio.Sound.Jump)
 
 	# Handle Movement
 	var direction := Input.get_axis("move_left", "move_right")
@@ -38,6 +40,14 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	var up_down := Input.get_axis("move_up", "move_down")
+	if is_on_ladder:
+		is_double_jump = false
+		if up_down:
+			velocity.y = up_down * SPEED
+		else:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	# Handle roll.
 	if Input.is_action_just_pressed("roll") and direction != 0 and is_on_floor() and not is_rolling:
